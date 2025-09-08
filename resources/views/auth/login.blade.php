@@ -1,6 +1,7 @@
-<x-layout.app>
+<x-layouts.app>
     <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div class="auth-container max-w-md w-full space-y-8 p-10 bg-white rounded-xl shadow-lg">
+            {{-- Start Header --}}
             <div class="text-center">
                 <div class="flex justify-center mb-4">
                     <i class="fas fa-user-circle text-5xl text-blue-600"></i>
@@ -8,11 +9,12 @@
                 <h2 class="text-3xl font-bold text-gray-900">Welcome back</h2>
                 <p class="mt-2 text-gray-600">Sign in to access your account</p>
             </div>
+            {{-- End Header --}}
 
-            <!-- Login Form -->
+            {{-- Start Login Form --}}
             <form class="mt-8 space-y-6" action="#" method="POST">
                 <div class="rounded-md shadow-sm space-y-4">
-                    <!-- Email Input -->
+                    {{-- Start Email Input --}}
                     <div>
                         <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email address</label>
                         <div class="relative">
@@ -24,8 +26,9 @@
                                 placeholder="you@example.com">
                         </div>
                     </div>
+                    {{-- End Email Input --}}
 
-                    <!-- Password Input -->
+                    {{-- Start Password Input --}}
                     <div>
                         <div class="flex justify-between items-center mb-1">
                             <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
@@ -47,16 +50,18 @@
                             </div>
                         </div>
                     </div>
+                    {{-- End Password Input --}}
                 </div>
 
-                <!-- Remember Me Checkbox -->
+                {{-- Start Remember Me Checkbox --}}
                 <div class="flex items-center">
                     <input id="remember-me" name="remember-me" type="checkbox"
                         class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
                     <label for="remember-me" class="ml-2 block text-sm text-gray-700">Remember me</label>
                 </div>
+                {{-- End Remember Me Checkbox --}}
 
-                <!-- Submit Button -->
+                {{-- Start Submit Button --}}
                 <div>
                     <button type="submit"
                         class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">
@@ -66,9 +71,11 @@
                         Sign in
                     </button>
                 </div>
+                {{-- End Submit Button --}}
             </form>
+            {{-- End Login Form --}}
 
-            <!-- Social Login -->
+            {{-- Start Social Login --}}
             <div class="mt-6">
                 <div class="relative">
                     <div class="absolute inset-0 flex items-center">
@@ -100,14 +107,16 @@
                     </div>
                 </div>
             </div>
+            {{-- End Social Login --}}
 
-            <!-- Sign Up Link -->
+            {{-- Start Sign Up Link --}}
             <div class="mt-6 text-center">
                 <p class="text-sm text-gray-600">
                     Don't have an account?
-                    <a href="./register.html" class="font-medium text-blue-600 hover:text-blue-500">Sign up</a>
+                    <a href="/register" class="font-medium text-blue-600 hover:text-blue-500">Sign up</a>
                 </p>
             </div>
+            {{-- End Sign Up Link --}}
         </div>
     </div>
-</x-layout.app>
+</x-layouts.app>
