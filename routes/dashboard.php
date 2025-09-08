@@ -1,6 +1,11 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Dashboard\CategoryController;
+use App\Http\Controllers\Dashboard\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'index']);
+
+// Categories Routes
+Route::get('/categories/create', [CategoryController::class, 'create']);
+Route::post('/categories/create', [CategoryController::class, 'store']);

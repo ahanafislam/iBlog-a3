@@ -1,3 +1,33 @@
+@php
+$contentManagementLinks = [
+[
+'label' => 'Create Category',
+'url' => '/dashboard/categories/create',
+'icon' => 'fas fa-pen',
+'active' => request()->is('dashboard/categories/create'),
+],
+[
+'label' => 'Category List',
+'url' => '/dashboard/categories',
+'icon' => 'fas fa-pen',
+'active' => request()->is('dashboard/categories'),
+],
+[
+'label' => 'All Posts',
+'url' => '#',
+'icon' => 'fas fa-folder',
+'active' => request()->is('dashboard/posts*'),
+],
+[
+'label' => 'Tags',
+'url' => '#',
+'icon' => 'fas fa-tags',
+'active' => request()->is('dashboard/tags*'),
+],
+];
+
+@endphp
+
 <aside class="bg-gray-800 text-white flex-shrink-0 w-64 relative z-10 flex flex-col" id="sidebar">
     <div class="flex items-center justify-between h-16 px-4 border-b border-gray-700">
         <div class="flex items-center space-x-2">
@@ -11,44 +41,21 @@
 
     <div class="flex-grow px-2 py-4 overflow-y-auto">
         <nav class="flex-1 space-y-1">
-            <div>
-                <a href="#" class="flex items-center px-3 py-3 text-sm font-medium rounded-md bg-gray-900 text-white">
-                    <i class="fas fa-tachometer-alt text-blue-400 mr-3"></i>
-                    <span>Dashboard</span>
-                </a>
-            </div>
+            <x-partials.dashboard.sidebar-link href="/dashboard" icon="fas fa-tachometer-alt"
+                :active="request()->is('dashboard')">
+                Dashboard
+            </x-partials.dashboard.sidebar-link>
 
-            <div class="sidebar-dropdown">
-                <button
-                    class="sidebar-dropdown-toggle flex items-center w-full px-3 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-700 hover:text-white">
-                    <i class="fas fa-newspaper mr-3"></i>
-                    <span>Content Management</span>
-                    <i class="fas fa-chevron-down ml-auto text-xs"></i>
-                </button>
-                <div class="sidebar-dropdown-menu hidden pl-2 mt-1 space-y-1">
-                    <a href="./category-create.html"
-                        class="flex items-center px-3 py-2 text-sm rounded-md text-gray-300 hover:bg-gray-700 hover:text-white pl-11">
-                        <i class="fas fa-pen mr-3 text-xs"></i>
-                        <span>Create Category</span>
-                    </a>
-                    <a href="./category-list.html"
-                        class="flex items-center px-3 py-2 text-sm rounded-md text-gray-300 hover:bg-gray-700 hover:text-white pl-11">
-                        <i class="fas fa-pen mr-3 text-xs"></i>
-                        <span>Category List</span>
-                    </a>
-                    <a href="#"
-                        class="flex items-center px-3 py-2 text-sm rounded-md text-gray-300 hover:bg-gray-700 hover:text-white pl-11">
-                        <i class="fas fa-folder mr-3 text-xs"></i>
-                        <span>All Posts</span>
-                    </a>
-                    <a href="#"
-                        class="flex items-center px-3 py-2 text-sm rounded-md text-gray-300 hover:bg-gray-700 hover:text-white pl-11">
-                        <i class="fas fa-tags mr-3 text-xs"></i>
-                        <span>Tags</span>
-                    </a>
-                </div>
-            </div>
-
+            <x-partials.dashboard.sidebar-dropdown
+                :active="request()->is([
+                    'dashboard/categories*',
+                    'dashboard/posts*',
+                    'dashboard/tags*'
+                ])"
+                icon="fas fa-newspaper" :links=$contentManagementLinks
+            >
+                Content Management
+            </x-partials.dashboard.sidebar-dropdown>
             <div class="sidebar-dropdown">
                 <button
                     class="sidebar-dropdown-toggle flex items-center w-full px-3 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-700 hover:text-white">
