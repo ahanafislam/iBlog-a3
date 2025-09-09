@@ -21,6 +21,9 @@
             {{-- End Top Bar Section --}}
 
             <main class="px-4 py-6 sm:px-6 lg:px-8">
+                {{-- Start Toaster Section --}}
+                <x-ui.toaster></x-ui.toaster>
+                {{-- End Toaster Section --}}
                 {{ $slot }}
             </main>
         </div>
