@@ -13,10 +13,16 @@ $contentManagementLinks = [
 'active' => request()->is('dashboard/categories'),
 ],
 [
+'label' => 'Create Post',
+'url' => '/dashboard/posts/create',
+'icon' => 'fa-solid fa-blog',
+'active' => request()->is('dashboard/posts/create'),
+],
+[
 'label' => 'All Posts',
-'url' => '#',
+'url' => '/dashboard/posts',
 'icon' => 'fas fa-folder',
-'active' => request()->is('dashboard/posts*'),
+'active' => request()->is('dashboard/posts'),
 ],
 [
 'label' => 'Tags',

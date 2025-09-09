@@ -23,11 +23,12 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {{-- Start Featured Post Section --}}
                 @foreach ($featuredPosts as $post)
-                <x-cards.blog :thumbnail_url="$post['thumbnail_url']" :category="$post['category']"
-                    :date="$post['date']" :reading_duration="$post['reading_duration']" :title="$post['title']"
-                    :content="$post['content']" />
+                <x-cards.blog :thumbnail_path="$post['thumbnail_path']" :category="$post['category']"
+                    :author="$post['author']" :created_at="$post['created_at']"
+                    :reading_duration="$post['reading_duration']" :title="$post['title']" :content="$post['content']" />
                 @endforeach
                 {{-- End Featured Post Section --}}
+
             </div>
         </div>
     </section>
@@ -41,14 +42,9 @@
             <div class="space-y-8">
                 {{-- Start Recent Post Section --}}
                 @foreach ($recentPosts as $post)
-                <x-cards.wide-blog
-                    :thumbnail_url="$post['thumbnail_url']"
-                    :category="$post['category']"
-                    :date="$post['date']"
-                    :reading_duration="$post['reading_duration']"
-                    :title="$post['title']"
-                    :content="$post['content']"
-                />
+                <x-cards.wide-blog :thumbnail_path="$post['thumbnail_path']" :category="$post['category']"
+                    :author="$post['author']" :created_at="$post['created_at']"
+                    :reading_duration="$post['reading_duration']" :title="$post['title']" :content="$post['content']" />
                 @endforeach
                 {{-- End Recent Post Section --}}
             </div>
