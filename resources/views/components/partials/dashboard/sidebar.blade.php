@@ -26,6 +26,47 @@ $contentManagementLinks = [
 ],
 ];
 
+$analyticsNReportsLinks = [
+[
+'label' => 'Traffic',
+'url' => '#',
+'icon' => 'fas fa-eye',
+'active' => request()->is('dashboard/traffic*'),
+],
+[
+'label' => 'Audience',
+'url' => '#',
+'icon' => 'fas fa-users',
+'active' => request()->is('dashboard/audience*'),
+],
+[
+'label' => 'Reports',
+'url' => '#',
+'icon' => 'fas fa-receipt',
+'active' => request()->is('dashboard/reports*'),
+],
+];
+
+$userSettingsLinks = [
+[
+'label' => 'Profile',
+'url' => '#',
+'icon' => 'fas fa-user',
+'active' => request()->is('dashboard/profile*'),
+],
+[
+'label' => 'Security',
+'url' => '#',
+'icon' => 'fas fa-lock',
+'active' => request()->is('dashboard/security*'),
+],
+[
+'label' => 'Notifications',
+'url' => '#',
+'icon' => 'fas fa-bell',
+'active' => request()->is('dashboard/notifications*'),
+],
+];
 @endphp
 
 <aside class="bg-gray-800 text-white flex-shrink-0 w-64 relative z-10 flex flex-col" id="sidebar">
@@ -46,105 +87,53 @@ $contentManagementLinks = [
                 Dashboard
             </x-partials.dashboard.sidebar-link>
 
-            <x-partials.dashboard.sidebar-dropdown
-                :active="request()->is([
+            <x-partials.dashboard.sidebar-dropdown :active="request()->is([
                     'dashboard/categories*',
                     'dashboard/posts*',
                     'dashboard/tags*'
-                ])"
-                icon="fas fa-newspaper" :links=$contentManagementLinks
-            >
+                ])" icon="fas fa-newspaper" :links=$contentManagementLinks>
                 Content Management
             </x-partials.dashboard.sidebar-dropdown>
-            <div class="sidebar-dropdown">
-                <button
-                    class="sidebar-dropdown-toggle flex items-center w-full px-3 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-700 hover:text-white">
-                    <i class="fas fa-chart-line mr-3"></i>
-                    <span>Analytics & Reports</span>
-                    <i class="fas fa-chevron-down ml-auto text-xs"></i>
-                </button>
-                <div class="sidebar-dropdown-menu hidden pl-2 mt-1 space-y-1">
-                    <a href="#"
-                        class="flex items-center px-3 py-2 text-sm rounded-md text-gray-300 hover:bg-gray-700 hover:text-white pl-11">
-                        <i class="fas fa-eye mr-3 text-xs"></i>
-                        <span>Traffic</span>
-                    </a>
-                    <a href="#"
-                        class="flex items-center px-3 py-2 text-sm rounded-md text-gray-300 hover:bg-gray-700 hover:text-white pl-11">
-                        <i class="fas fa-users mr-3 text-xs"></i>
-                        <span>Audience</span>
-                    </a>
-                    <a href="#"
-                        class="flex items-center px-3 py-2 text-sm rounded-md text-gray-300 hover:bg-gray-700 hover:text-white pl-11">
-                        <i class="fas fa-receipt mr-3 text-xs"></i>
-                        <span>Reports</span>
-                    </a>
-                </div>
-            </div>
 
-            <div>
-                <a href="#"
-                    class="flex items-center px-3 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-700 hover:text-white">
-                    <i class="fas fa-comments mr-3"></i>
-                    <span>Comments</span>
-                </a>
-            </div>
+            <x-partials.dashboard.sidebar-dropdown :active="request()->is([
+                    'dashboard/traffic*',
+                    'dashboard/audience*',
+                    'dashboard/reports*'
+                ])" icon="fas fa-chart-line" :links=$analyticsNReportsLinks>
+                Analytics & Reports
+            </x-partials.dashboard.sidebar-dropdown>
 
-            <div>
-                <a href="#"
-                    class="flex items-center px-3 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-700 hover:text-white">
-                    <i class="fas fa-bookmark mr-3"></i>
-                    <span>Bookmarks</span>
-                </a>
-            </div>
+            <x-partials.dashboard.sidebar-link href="#" icon="fas fa-comments"
+                :active="request()->is('dashboard/comments')">
+                Comments
+            </x-partials.dashboard.sidebar-link>
 
-            <div class="sidebar-dropdown">
-                <button
-                    class="sidebar-dropdown-toggle flex items-center w-full px-3 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-700 hover:text-white">
-                    <i class="fas fa-cog mr-3"></i>
-                    <span>User Settings</span>
-                    <i class="fas fa-chevron-down ml-auto text-xs"></i>
-                </button>
-                <div class="sidebar-dropdown-menu hidden pl-2 mt-1 space-y-1">
-                    <a href="#"
-                        class="flex items-center px-3 py-2 text-sm rounded-md text-gray-300 hover:bg-gray-700 hover:text-white pl-11">
-                        <i class="fas fa-user mr-3 text-xs"></i>
-                        <span>Profile</span>
-                    </a>
-                    <a href="#"
-                        class="flex items-center px-3 py-2 text-sm rounded-md text-gray-300 hover:bg-gray-700 hover:text-white pl-11">
-                        <i class="fas fa-lock mr-3 text-xs"></i>
-                        <span>Security</span>
-                    </a>
-                    <a href="#"
-                        class="flex items-center px-3 py-2 text-sm rounded-md text-gray-300 hover:bg-gray-700 hover:text-white pl-11">
-                        <i class="fas fa-bell mr-3 text-xs"></i>
-                        <span>Notifications</span>
-                    </a>
-                </div>
-            </div>
+            <x-partials.dashboard.sidebar-link href="#" icon="fas fa-bookmark"
+                :active="request()->is('dashboard/bookmarks')">
+                Bookmarks
+            </x-partials.dashboard.sidebar-link>
 
-            <div>
-                <a href="#"
-                    class="flex items-center px-3 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-700 hover:text-white">
-                    <i class="fas fa-envelope mr-3"></i>
-                    <span>Messages</span>
-                </a>
-            </div>
-            <div>
-                <a href="#"
-                    class="flex items-center px-3 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-700 hover:text-white">
-                    <i class="fas fa-users mr-3"></i>
-                    <span>Team</span>
-                </a>
-            </div>
-            <div>
-                <a href="#"
-                    class="flex items-center px-3 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-gray-700 hover:text-white">
-                    <i class="fas fa-star mr-3"></i>
-                    <span>Favorites</span>
-                </a>
-            </div>
+            <x-partials.dashboard.sidebar-dropdown :active="request()->is([
+                'dashboard/profile*',
+                'dashboard/security*',
+                'dashboard/notifications*'
+            ])" icon="fas fa-user-cog" :links=$userSettingsLinks>
+                User Settings
+            </x-partials.dashboard.sidebar-dropdown>
+            <x-partials.dashboard.sidebar-link href="#" icon="fas fa-envelope"
+                :active="request()->is('dashboard/messages*')">
+                Messages
+            </x-partials.dashboard.sidebar-link>
+
+            <x-partials.dashboard.sidebar-link href="#" icon="fas fa-users" :active="request()->is('dashboard/team*')">
+                Team
+            </x-partials.dashboard.sidebar-link>
+
+            <x-partials.dashboard.sidebar-link href="#" icon="fas fa-star"
+                :active="request()->is('dashboard/favorites*')">
+                Favorites
+            </x-partials.dashboard.sidebar-link>
+
         </nav>
     </div>
 
