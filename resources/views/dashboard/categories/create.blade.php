@@ -29,15 +29,15 @@
 
             {{-- Start Parent Category Section --}}
             <div>
-                <label for="parent_category" class="block text-sm font-medium text-gray-700">Parent Category</label>
-                <select id="parent_category" name="parent_category"
+                <label for="parent_id" class="block text-sm font-medium text-gray-700">Parent Category</label>
+                <select id="parent_id" name="parent_id"
                     class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 bg-white focus:ring-blue-500 focus:border-blue-500">
                     <option value="" selected disabled class="text-gray-300">Select Parent Category</option>
                     @foreach ($categories as $category)
-                    <option value="{{ $category->slug }}" {{ old('parent_category') == $category->slug ? 'selected' : '' }}>{{ $category->title }}</option>
+                    <option value="{{ $category->id }}" {{ old('parent_id') == $category->id ? 'selected' : '' }}>{{ $category->title }}</option>
                     @endforeach
                 </select>
-                @error('parent_category')
+                @error('parent_id')
                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
             </div>
@@ -57,7 +57,7 @@
 
             {{-- Start Submit Button Section --}}
             <div class="text-right">
-                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-md cursor-pointer">
+                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-md">
                     Create Category
                 </button>
             </div>

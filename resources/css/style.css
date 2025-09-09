@@ -44,3 +44,7 @@ input {
     background: #fff;
     border-width: 1px;
 }
+
+button {
+    cursor: pointer;
+}

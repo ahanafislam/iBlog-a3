@@ -7,7 +7,6 @@ use App\Models\Category;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 
 class CategoryController extends Controller
 {
@@ -25,15 +24,21 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $validatedData = $request->validate([
             'title' => 'required|unique:categories,title|min:2',
             'slug' => 'required|unique:categories,slug',
-            'parent_category' => 'nullable',
+            'parent_id' => 'nullable',
             'description' => 'required|min:10'
         ]);
 
-        dd($validatedData);
+        Category::create($validatedData);
+
+        return redirect('/dashboard/categories')
+            ->with("message", [
+                "type" => "success",
+                "text" => "Category Has Been Added Successfully!"
+            ]);
     }
 }
