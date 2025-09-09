@@ -37,7 +37,7 @@ class CategorySeeder extends Seeder
         // 4. Create the other top-level categories that don't have children
         Category::factory()->create(['title' => 'Cloud Computing', 'slug' => Str::slug('Cloud Computing')]);
         Category::factory()->create(['title' => 'Cybersecurity', 'slug' => Str::slug('Cybersecurity')]);
-        Category::factory()->create(['title' => 'Mobile Development', 'slug' => Str::slug('Mobile Development')]);
+        Category::factory()->create(['title' => 'Mobile App Development', 'slug' => Str::slug('Mobile Development')]);
         Category::factory()->create(['title' => 'DevOps', 'slug' => Str::slug('DevOps')]);
     }
 }
