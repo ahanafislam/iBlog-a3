@@ -32,77 +32,29 @@
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
+                    @foreach ($categories as $category)
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                            Web Development
+                            {{ $category->title }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            web-development
+                            {{ $category->slug }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            —
+                            {{ $category->parent->title ?? "N/A" }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                             <a href="#" class="text-indigo-600 hover:text-indigo-900 mr-2">Edit</a>
                             <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                            React
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            react
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                            Web Development
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                            <a href="#" class="text-indigo-600 hover:text-indigo-900 mr-2">Edit</a>
-                            <a href="#" class="text-red-600 hover:text-red-900">Delete</a>
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
 
-        <div class="mt-4 flex justify-between items-center">
-            <div class="text-sm text-gray-700">
-                Showing <span class="font-medium">1</span> to <span class="font-medium">10</span> of <span
-                    class="font-medium">52</span> results
-            </div>
-            <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
-                <a href="#"
-                    class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
-                    <span class="sr-only">Previous</span>
-                    <i class="fas fa-chevron-left h-5 w-5"></i>
-                </a>
-                <a href="#"
-                    class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
-                    1
-                </a>
-                <a href="#"
-                    class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-blue-600 text-sm font-medium text-white hover:bg-blue-700">
-                    2
-                </a>
-                <a href="#"
-                    class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
-                    3
-                </a>
-                <span
-                    class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">
-                    ...
-                </span>
-                <a href="#"
-                    class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
-                    6
-                </a>
-                <a href="#"
-                    class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
-                    <span class="sr-only">Next</span>
-                    <i class="fas fa-chevron-right h-5 w-5"></i>
-                </a>
-            </nav>
+        <div class="mt-4">
+            {{ $categories->links() }}
         </div>
     </div>
 </x-layouts.dashboard>

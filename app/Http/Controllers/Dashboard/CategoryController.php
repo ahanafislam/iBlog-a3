@@ -12,7 +12,11 @@ class CategoryController extends Controller
 {
     public function index(): View
     {
-        return view('dashboard.categories.index');
+        $categories = Category::with('parent')->latest()->paginate(10);
+
+        return view('dashboard.categories.index',[
+            "categories" => $categories
+        ]);
     }
 
     public function create(): View
