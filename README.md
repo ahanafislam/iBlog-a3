@@ -79,7 +79,7 @@ php artisan storage:link
 ### 7️⃣ Start the development server
 
 ```bash
-php artisan serve
+composer run dev
 ```
 
 ---
