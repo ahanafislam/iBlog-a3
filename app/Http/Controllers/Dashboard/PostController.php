@@ -38,12 +38,12 @@ class PostController extends Controller
             [
                 'title' => 'required|string|unique:posts,title|max:255',
                 'content' => 'required|string|min:50',
-                'thumbnail_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'thumbnail_path' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
                 'category_id' => 'required|exists:categories,id',
             ],
             [
                 "thumbnail_path.max" => "The thumbnail may not be larger than 2MB",
-                "thumbnail_path.mimes" => "The thumbnail only support jpeg,png,jpg,gif,svg files.",
+                "thumbnail_path.mimes" => "The thumbnail only support jpeg,png,jpg,gif,svg,webp files.",
                 "category_id.required" => "Please select proper category.",
             ]
         );

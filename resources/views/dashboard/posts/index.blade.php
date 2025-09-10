@@ -47,7 +47,7 @@
                                     <img src="{{ asset('storage/' . $post->thumbnail_path) }}" alt="Thumbnail"
                                         class="w-16 h-10 object-cover rounded-md">
                                 @else
-                                    <img src="{{ asset('thumbnails/default_thumb.png') }}" alt="Default Thumbnail"
+                                    <img src="{{ Vite::asset('resources/images/default_thumb.png') }}" alt="Default Thumbnail"
                                         class="w-16 h-10 object-cover rounded-md">
                                 @endif
                             </td>

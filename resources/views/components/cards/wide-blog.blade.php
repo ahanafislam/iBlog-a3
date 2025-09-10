@@ -10,7 +10,7 @@
 
 <article class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition flex flex-col md:flex-row">
     @if (!$thumbnail_path)
-    <img src="{{ asset('thumbnails/default_thumb.png') }}" alt="{{ $category['title'] }}"
+    <img src="{{ Vite::asset('resources/images/default_thumb.png') }}" alt="{{ $category['title'] }}"
         class="md:w-1/3 h-48 md:h-auto object-cover">
     @else
     <img src="{{ asset('storage/' . $thumbnail_path) }}" alt="{{ $category['title'] }}"
