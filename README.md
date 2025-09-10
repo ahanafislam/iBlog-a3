@@ -1,61 +1,107 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# iBlog - A Laravel Blog Platform
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A full-featured blog platform built with the TALL stack (Tailwind CSS, Alpine.js, Laravel, Livewire), featuring a complete admin dashboard, user roles, and a dynamic frontend.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+-   **Role-Based Access Control (RBAC):**
+    -   **Admin:** Full control over the application, including user and category management.
+    -   **Content Creator:** Can create, edit, and manage their own posts.
+    -   **User/Reader:** Can browse and read posts.
+-   **Admin Dashboard:**
+    -   Statistics overview (total posts, categories, users).
+    -   Paginated lists for managing posts, categories, and users.
+    -   Full CRUD functionality for posts and categories.
+-   **Dynamic Frontend:**
+    -   Posts displayed under their respective categories.
+    -   Filter posts by category.
+    -   Sort posts by newest or oldest.
+-   **Database Seeding:** Includes factories for posts, categories, and users to quickly populate the blog with sample data.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Technologies Used
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-   **Backend:** PHP, Laravel
+-   **Frontend:** JavaScript, Tailwind CSS, Blade
+-   **Database:** MySQL / MariaDB (or your preferred choice)
+-   **Development:** Vite, pnpm
 
-## Learning Laravel
+## Getting Started
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Follow these instructions to get a copy of the project up and running on your local machine for development and testing purposes.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Prerequisites
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+-   PHP (version as required by the project's `composer.json`)
+-   Composer
+-   Node.js and pnpm
+-   A database server (e.g., MySQL)
 
-## Laravel Sponsors
+### Installation
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1.  **Clone the repository:**
+    ```bash
+    git clone <your-repository-url>
+    cd iBlog-A3
+    ```
 
-### Premium Partners
+2.  **Install PHP dependencies:**
+    ```bash
+    composer install
+    ```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+3.  **Create your environment file:**
+    Copy the example environment file.
+    ```bash
+    cp .env.example .env
+    ```
 
-## Contributing
+4.  **Generate an application key:**
+    ```bash
+    php artisan key:generate
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+5.  **Configure your `.env` file:**
+    Open the `.env` file in a text editor and add your database connection details (DB_DATABASE, DB_USERNAME, DB_PASSWORD).
 
-## Code of Conduct
+6.  **Install frontend dependencies:**
+    ```bash
+    pnpm install
+    ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+7.  **Build frontend assets:**
+    ```bash
+    pnpm run build
+    ```
 
-## Security Vulnerabilities
+8.  **Run database migrations and seed the database:**
+    This command will create the database schema and populate it with sample data (users, categories, posts).
+    ```bash
+sh
+    php artisan migrate:fresh --seed
+    ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+9.  **Link the storage directory:**
+    This makes your user-uploaded thumbnails publicly accessible.
+    ```bash
+    php artisan storage:link
+    ```
 
-## License
+10. **Serve the application:**
+    ```bash
+    php artisan serve
+    ```
+    Your application will be available at `http://127.0.0.1:8000`.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Default Login Credentials
+
+The database seeder creates the following users you can use to log in:
+
+-   **Admin:**
+    -   **Email:** `admin@example.com`
+    -   **Password:** `password`
+-   **Content Creator:**
+    -   **Email:** `creator@example.com`
+    -   **Password:** `password`
+-   **Regular User:**
+    -   **Email:** `user@example.com`
+    -   **Password:** `password`
