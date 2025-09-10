@@ -1,4 +1,4 @@
-# Blog Management System
+# iBlog Management
 
 A simple blog management system built with **Laravel** and **Blade**.  
 This project demonstrates how to manage blog categories and posts with full CRUD functionality, validation, and pagination for both categories and posts.  
@@ -43,10 +43,6 @@ This project demonstrates how to manage blog categories and posts with full CRUD
 Follow these steps to set up the project locally:
 
 ### 1️⃣ Clone the repository
-```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
-````
 
 ### 2️⃣ Install PHP dependencies
 
