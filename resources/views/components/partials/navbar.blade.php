@@ -23,19 +23,19 @@
                             @if ($category->children->isNotEmpty())
                                 <div class="relative desktop-dropdown-sub">
                                     <button class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition flex justify-between items-center w-full text-left">
-                                        {{ $category->title }}
+                                        <a href="/posts?category={{$category->slug}}" >{{ $category->title }}</a>
                                         <i class="fas fa-chevron-right text-xs"></i>
                                     </button>
                                     <div class="absolute left-full top-0 mt-0 w-64 bg-white rounded-md shadow-lg hidden desktop-dropdown-submenu">
                                         {{-- Loop through the children --}}
                                         @foreach ($category->children as $child)
-                                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition">{{ $child->title }}</a>
+                                            <a href="/posts?category={{$child->slug}}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition">{{ $child->title }}</a>
                                         @endforeach
                                     </div>
                                 </div>
                             @else
                                 {{-- Category without children --}}
-                                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition">{{ $category->title }}</a>
+                                <a href="/posts?category={{$category->slug}}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition">{{ $category->title }}</a>
                             @endif
                         @endforeach
                     </div>

@@ -50,9 +50,9 @@
             </div>
 
             <div class="mt-8 flex justify-center">
-                <button class="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition">
+                <a href="/posts" class="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition">
                     Browse All Articles
-                </button>
+                </a>
             </div>
         </main>
         {{-- End Recent Articles --}}
