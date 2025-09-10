@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
 
@@ -10,10 +11,11 @@ class HomeController extends Controller
 {
     public function index(): View
     {
+
         $featuredPosts = [
             [
                 'id' => 1,
-                'thumbnail_path' => 'https://placehold.co/480x200/png',
+                'thumbnail_path' => '',
                 'category' => [
                     'title' => "Web Development",
                     'slug' => "web-development",
@@ -28,7 +30,7 @@ class HomeController extends Controller
             ],
             [
                 'id' => 2,
-                'thumbnail_path' => 'https://placehold.co/480x200/png',
+                'thumbnail_path' => '',
                 'category' => [
                     'title' => "Artificial Intelligence",
                     'slug' => "artificial-intelligence",
@@ -43,7 +45,7 @@ class HomeController extends Controller
             ],
             [
                 'id' => 3,
-                'thumbnail_path' => 'https://placehold.co/480x200/png',
+                'thumbnail_path' => '',
                 'category' => [
                     'title' => "Cloud Computing",
                     'slug' => "cloud-computing",
@@ -58,54 +60,7 @@ class HomeController extends Controller
             ],
         ];
 
-
-        $recentPosts = [
-            [
-                'id' => 4,
-                'thumbnail_path' => 'https://placehold.co/480x200/png',
-                'category' => [
-                    'title' => "Web Development",
-                    'slug' => "web-development",
-                ],
-                'author' => [
-                    'name' => "Mr. Supper Cool Man",
-                ],
-                'title' => "React 18: What's New and Improved",
-                'content' => "Discover the exciting new features and improvements in React 18 and how they can benefit your projects.",
-                'created_at' => Carbon::parse('2023-07-05 00:00:00'),
-                'reading_duration' => 7,
-            ],
-            [
-                'id' => 5,
-                'thumbnail_path' => 'https://placehold.co/480x200/png',
-                'category' => [
-                    'title' => "Cybersecurity",
-                    'slug' => "cybersecurity",
-                ],
-                'author' => [
-                    'name' => "Ms. Firewall Defender",
-                ],
-                'title' => "Cybersecurity Essentials for Developers",
-                'content' => "Key security practices every developer should implement to protect their applications and users.",
-                'created_at' => Carbon::parse('2023-07-12 00:00:00'),
-                'reading_duration' => 10,
-            ],
-            [
-                'id' => 6,
-                'thumbnail_path' => 'https://placehold.co/480x200/png',
-                'category' => [
-                    'title' => "Development",
-                    'slug' => "development",
-                ],
-                'author' => [
-                    'name' => "Dr. Code Builder",
-                ],
-                'title' => "The Rise of Low-Code Development Platforms",
-                'content' => "How low-code platforms are changing the software development landscape and who should use them.",
-                'created_at' => Carbon::parse('2023-07-18 00:00:00'),
-                'reading_duration' => 6,
-            ],
-        ];
+        $recentPosts = Post::latest()->take(3)->get();
 
         return view('index', [
             'featuredPosts' => $featuredPosts,

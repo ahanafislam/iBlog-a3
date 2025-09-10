@@ -9,7 +9,13 @@
 ])
 
 <article class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition flex flex-col md:flex-row">
-    <img src="{{ $thumbnail_path }}" alt="{{ $category['title'] }}" class="md:w-1/3 h-48 md:h-auto object-cover">
+    @if (!$thumbnail_path)
+    <img src="{{ asset('thumbnails/default_thumb.png') }}" alt="{{ $category['title'] }}"
+        class="md:w-1/3 h-48 md:h-auto object-cover">
+    @else
+    <img src="{{ asset('storage/' . $thumbnail_path) }}" alt="{{ $category['title'] }}"
+        class="md:w-1/3 h-48 md:h-auto object-cover">
+    @endif
     <div class="p-6 md:w-2/3">
         <div class="flex items-center text-sm text-gray-500 mb-2 flex-wrap gap-2">
             <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-md text-xs">

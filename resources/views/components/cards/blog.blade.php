@@ -9,7 +9,13 @@
 ])
 
 <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-    <img src="{{ $thumbnail_path }}" alt="{{ $category['title'] }}" class="w-full h-48 object-cover">
+    @if (!$thumbnail_path)
+    <img src="{{ asset('thumbnails/default_thumb.png') }}" alt="{{ $category['title'] }}"
+        class="w-full h-48 object-cover">
+    @else
+    <img src="{{ asset('storage/' . $thumbnail_path) }}" alt="{{ $category['title'] }}"
+        class="w-full h-48 object-cover">
+    @endif
 
     <div class="p-6">
         <div class="flex items-center text-sm text-gray-500 mb-2 flex-wrap gap-2">

@@ -11,12 +11,20 @@ class Post extends Model
     /** @use HasFactory<\Database\Factories\PostFactory> */
     use HasFactory;
 
-    public function author():BelongsTo
+    protected $fillable = [
+        "title",
+        "content",
+        "thumbnail_path",
+        "category_id",
+        "author_id"
+    ];
+
+    public function author(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function category():BelongsTo
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
